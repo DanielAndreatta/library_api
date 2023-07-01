@@ -45,7 +45,17 @@ const updateBook = async (req,res) => {
 }
 
 const deleteBook = async (req,res) => {
-    ;
+    try {
+        const response = await bookService.deleteBook(req.params.bookId);
+        const { statusCode, ...responseBook } = response;
+        if (!response) {
+            res.status(statusCode).json({ action: "deleteBook", error: "Could Not Delete Book" });
+        } else {
+            res.status(statusCode).json(responseBook);
+        } 
+    } catch (err) {
+        res.status(500).json({ action: "deleteBook", error: err.message });       
+    }
 }
 
 

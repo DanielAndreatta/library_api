@@ -45,7 +45,17 @@ const updateLibrary = async (req,res) => {
 }
 
 const deleteLibrary = async (req,res) => {
-    ;
+    try {
+        const response = await libraryService.deleteLibrary(req.params.libraryId);
+        const { statusCode, ...responseLibrary } = response;
+        if (!response) {
+            res.status(statusCode).json({ action: "deleteLibrary", error: "Could Not Delete Library" });
+        } else {
+            res.status(statusCode).json(responseLibrary);
+        } 
+    } catch (err) {
+        res.status(500).json({ action: "deleteLibrary", error: err.message });       
+    }
 }
 
 

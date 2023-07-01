@@ -31,4 +31,14 @@ const getLibrary = async (libraryId) => {
     }
 }
 
-module.exports = { createLibrary, getAllLibrary, getLibrary };
+const deleteLibrary = async (libraryId) => {
+    try {
+        const response = await libraryProvider.deleteLibrary(libraryId);
+        return response
+    } catch (err) {
+        console.error("There was an error deleting a Library:", err);
+        return null;
+    }
+}
+
+module.exports = { createLibrary, getAllLibrary, getLibrary, deleteLibrary };

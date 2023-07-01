@@ -31,4 +31,25 @@ const getBook = async (bookId) => {
     }
 };
 
-module.exports = { createBook, getAllBook, getBook };
+const deleteBook = async (bookId) => {
+    try {
+        const book = await Book.findByPk(bookId);
+        if (!book) {
+            return { statusCode: 404, message: "Book Not Found" };
+        }
+
+        const bookRemove = await book.destroy();
+
+        if (!bookRemove) {
+            return { statusCode: 404, message: "Error deleting a Book" }
+        } else {
+            return { statusCode: 200, message: "Book successfully Deleted!" }
+        }
+
+    } catch (err) {
+        console.error("Error deleting a Book", err);
+        throw err;
+    }
+};
+
+module.exports = { createBook, getAllBook, getBook, deleteBook };
