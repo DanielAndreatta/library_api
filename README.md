@@ -29,6 +29,12 @@ el servicio. También use SQLlite como motor de base de datos.
 
 ##### DELETE /book/{id}      Elimina un libro de manera lógica.
 
+### User
+
+##### POST /user      Añade un nuevo usuario.
+
+##### GET /user/{id}      Muestra los datos de una usuario por id.
+
 ## Modelos:
 
 ### Entidad Library
@@ -67,3 +73,4 @@ el servicio. También use SQLlite como motor de base de datos.
 ### 2. Creo la estructura de la api rest, con todas las carpetas que voy a usar, el archivo app.js y realizo la configuración de la base de datos.
 ### 3. Creo los modelos que voy a usar para realizar el api, en este caso las entidades serán book, library y user(este último lo hice en base a lo visto en clases), al mismo tiempo realizo los índices correspondientes a los modelos. A los modelos “book” y “library”, les añadí “paranoid” de la librería Sequelize, para poder hacer uso del borrado lógico, el cual crea en la base de datos un campo llamado deleteAt que es de tipo Date, y guarda una fecha de borrado en la base de datos cuando se realiza un delete.
 ### 4. Creo las rutas que voy a usar para los endpoint de “library” y “book”, con sus respectivos controllers, services y providers.
+### 5. Creo las rutas que voy a usar para los endpoint de “user”, con sus respectivos controllers, services y providers.
