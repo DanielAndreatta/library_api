@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { bookRouter, libraryRouter } = require("./routes");
+const { bookRouter, libraryRouter, userRouter } = require("./routes");
 const loggingMdw = require('./middleware/logging');
 const { initializeDB } = require('./config/db-config');
 
@@ -22,6 +22,7 @@ app.get('/user', (req, res)=>{
 
 app.use("/book", bookRouter);
 app.use("/library", libraryRouter);
+app.use("/user", userRouter);
 
 app.listen(PORT, async() => {
     await initializeDB();
