@@ -1,4 +1,5 @@
 const { Book } = require("../models");
+const { param } = require("../routes/book");
 
 const createBook = async (book) => {
     try {
@@ -20,4 +21,14 @@ const getAllBook = async () => {
     }
 };
 
-module.exports = { createBook, getAllBook };
+const getBook = async (bookId) => {
+    try {
+        const book = await Book.findByPk(bookId);
+        return book;
+    } catch (err) {
+        console.error("Error when search a Book", err);
+        throw err;
+    }
+};
+
+module.exports = { createBook, getAllBook, getBook };

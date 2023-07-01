@@ -13,12 +13,22 @@ const createLibrary = async (library) => {
 
 const getAllLibrary = async () => {
     try {
-        const library = await libraryProvider.getAllLibrary();
-        return library;
+        const libraries = await libraryProvider.getAllLibrary();
+        return libraries;
     } catch (err) {
         console.error("There was an error getting all Libraries:", err);
         return null;
     }
 }
 
-module.exports = { createLibrary, getAllLibrary };
+const getLibrary = async (libraryId) => {
+    try {
+        const library = await libraryProvider.getLibrary(libraryId);
+        return library;
+    } catch (err) {
+        console.error("There was an error getting a Library:", err);
+        return null;
+    }
+}
+
+module.exports = { createLibrary, getAllLibrary, getLibrary };

@@ -22,4 +22,16 @@ const getAllLibrary = async () => {
     }
 };
 
-module.exports = { createLibrary, getAllLibrary };
+const getLibrary = async (libraryId) => {
+    try {
+        const libraries = await Library.findByPk(libraryId,{
+            include: Book
+        });
+        return libraries;
+    } catch (err) {
+        console.error("Error when search a Library", err);
+        throw err;
+    }
+};
+
+module.exports = { createLibrary, getAllLibrary, getLibrary };

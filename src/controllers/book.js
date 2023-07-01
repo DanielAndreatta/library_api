@@ -25,12 +25,19 @@ const getAllBook = async  (req,res) => {
     } catch (err) {
         res.status(500).json({ action: "getAllBook", error: err.message });       
     }
-    
-
 }
 
 const getBook = async (req,res) => {
-    ;
+    try {
+        const book = await bookService.getBook(req.params.bookId);
+        if (!book) {
+            res.status(404).json({ action: "getBook", error: "Book Not Found" });
+        } else {
+            res.status(200).json(book);
+        } 
+    } catch (err) {
+        res.status(500).json({ action: "getBook", error: err.message });       
+    }
 }
 
 const updateBook = async (req,res) => {

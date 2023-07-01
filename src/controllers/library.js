@@ -25,12 +25,19 @@ const getAllLibrary = async  (req,res) => {
     } catch (err) {
         res.status(500).json({ action: "getAllLibrary", error: err.message });        
     }
-    
-
 }
 
 const getLibrary = async (req,res) => {
-    ;
+    try {
+        const library = await libraryService.getLibrary(req.params.libraryId);
+        if (!library) {
+            res.status(404).json({ action: "getLibrary", error: "Library Not Found" });
+        } else {
+            res.status(200).json(library);
+        } 
+    } catch (err) {
+        res.status(500).json({ action: "getLibrary", error: err.message });        
+    }
 }
 
 const updateLibrary = async (req,res) => {
