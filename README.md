@@ -5,7 +5,7 @@ el servicio. También use SQLlite como motor de base de datos.
 
 ## Modelos:
 
-### Entidad Librería
+### Entidad Library
 
 | Campo     | Tipo   | Descripción                                     |
 |-----------|--------|-------------------------------------------------|
@@ -14,7 +14,7 @@ el servicio. También use SQLlite como motor de base de datos.
 | location  | String | La dirección física de la librería.              |
 | telefono  | String | El número de teléfono de la librería.             |
 
-### Entidad Libro
+### Entidad Book
 
 | Campo    | Tipo   | Descripción                                                          |
 |----------|--------|----------------------------------------------------------------------|
@@ -25,3 +25,19 @@ el servicio. También use SQLlite como motor de base de datos.
 | year     | String | El año de edición del libro.                                          |
 | library  | Int    | El identificador de la librería donde se encuentra este libro.        |
 
+### Entidad User
+
+| Campo       | Tipo   | Descripción                  |
+|-------------|--------|------------------------------|
+| id          | Int    | El identificador del usuario |
+| firstName   | String | El nombre del usuario        |
+| lastName    | String | El apellido del usuario      |
+| email       | String | El correo electrónico del usuario |
+| password    | String | La contraseña del usuario    |
+
+
+## Proceso de Desarrollo de la api rest  “library_api”
+### 1. Primeramente creo una carpeta con el nombre "library_api" donde se ubicará el proyecto, a su vez, dentro de la misma inicializo el proyecto con "npm init" e instale las dependencias que voy a usar.
+### 2. Creo la estructura de la api rest, con todas las carpetas que voy a usar, el archivo app.js y realizo la configuración de la base de datos.
+### 3. Creo los modelos que voy a usar para realizar el api, en este caso las entidades serán book, library y user(este último lo hice en base a lo visto en clases), al mismo tiempo realizo los índices correspondientes a los modelos. A los modelos “book” y “library”, les añadí “paranoid” de la librería Sequelize, para poder hacer uso del borrado lógico, el cual crea en la base de datos un campo llamado deleteAt que es de tipo Date, y guarda una fecha de borrado en la base de datos cuando se realiza un delete.
+### 4. Creo las rutas que voy a usar para los endpoint de “library” y “book”, con sus respectivos controllers, services y providers.
