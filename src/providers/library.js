@@ -34,6 +34,32 @@ const getLibrary = async (libraryId) => {
     }
 };
 
+const updateLibrary = async (libraryId, body) => {
+    try {
+        const library = await Library.findByPk(libraryId);
+        if (!library) {
+            return { statusCode: 404, message: "Library Not Found" };
+        }
+
+        const { name, location, phone } = body;
+        const libraryUpdate = await library.update({
+            name,
+            location,
+            phone
+        });
+
+        if (!libraryUpdate) {
+            return { statusCode: 404, message: "Error updating a Library" }
+        } else {
+            return { statusCode: 200, message: "Library successfully Updated!" }
+        }
+
+    } catch (err) {
+        console.error("Error updating a Library", err);
+        throw err;
+    }
+};
+
 const deleteLibrary = async (libraryId) => {
     try {
         const library = await Library.findByPk(libraryId);
@@ -55,4 +81,4 @@ const deleteLibrary = async (libraryId) => {
     }
 };
 
-module.exports = { createLibrary, getAllLibrary, getLibrary, deleteLibrary };
+module.exports = { createLibrary, getAllLibrary, getLibrary, updateLibrary, deleteLibrary };

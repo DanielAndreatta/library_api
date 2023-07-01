@@ -31,6 +31,16 @@ const getLibrary = async (libraryId) => {
     }
 }
 
+const updateLibrary = async (libraryId, body) => {
+    try {
+        const library = await libraryProvider.updateLibrary(libraryId, body);
+        return library;
+    } catch (err) {
+        console.error("There was an error updating a Library:", err);
+        return null;
+    }
+}
+
 const deleteLibrary = async (libraryId) => {
     try {
         const response = await libraryProvider.deleteLibrary(libraryId);
@@ -41,4 +51,4 @@ const deleteLibrary = async (libraryId) => {
     }
 }
 
-module.exports = { createLibrary, getAllLibrary, getLibrary, deleteLibrary };
+module.exports = { createLibrary, getAllLibrary, getLibrary, updateLibrary, deleteLibrary };

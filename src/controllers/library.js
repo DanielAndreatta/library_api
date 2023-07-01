@@ -41,8 +41,20 @@ const getLibrary = async (req,res) => {
 }
 
 const updateLibrary = async (req,res) => {
-    ;
+    try {
+        const library = await libraryService.updateLibrary(req.params.libraryId, req.body);
+        const { statusCode, ...responseLibrary } = library;
+        if (!library) {
+            res.status(statusCode).json({ action: "updateLibrary", error: "Could Not Update Library" });
+        } else {
+            res.status(statusCode).json(responseLibrary);
+        } 
+    } catch (err) {
+        res.status(500).json({ action: "updateLibrary", error: err.message });       
+    }
 }
+
+
 
 const deleteLibrary = async (req,res) => {
     try {

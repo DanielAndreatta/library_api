@@ -31,6 +31,33 @@ const getBook = async (bookId) => {
     }
 };
 
+const updateBook = async (bookId, body) => {
+    try {
+        const book = await Book.findByPk(bookId);
+        if (!book) {
+            return { statusCode: 404, message: "Book Not Found" };
+        }
+
+        const { isbn, title, author, year } = body;
+        const bookUpdate = await book.update({
+            isbn, 
+            title, 
+            author, 
+            year
+        });
+
+        if (!bookUpdate) {
+            return { statusCode: 404, message: "Error updating a Book" }
+        } else {
+            return { statusCode: 200, message: "Book successfully Updated!" }
+        }
+
+    } catch (err) {
+        console.error("Error updating a Book", err);
+        throw err;
+    }
+};
+
 const deleteBook = async (bookId) => {
     try {
         const book = await Book.findByPk(bookId);
@@ -52,4 +79,4 @@ const deleteBook = async (bookId) => {
     }
 };
 
-module.exports = { createBook, getAllBook, getBook, deleteBook };
+module.exports = { createBook, getAllBook, getBook, updateBook, deleteBook };

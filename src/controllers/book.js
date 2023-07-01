@@ -41,7 +41,17 @@ const getBook = async (req,res) => {
 }
 
 const updateBook = async (req,res) => {
-    ;
+    try {
+        const book = await bookService.updateBook(req.params.bookId, req.body);
+        const { statusCode, ...responseBook } = book;
+        if (!book) {
+            res.status(statusCode).json({ action: "updateBook", error: "Could Not Update Book" });
+        } else {
+            res.status(statusCode).json(responseBook);
+        } 
+    } catch (err) {
+        res.status(500).json({ action: "updateBook", error: err.message });       
+    }
 }
 
 const deleteBook = async (req,res) => {

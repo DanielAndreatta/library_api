@@ -31,6 +31,16 @@ const getBook = async (bookId) => {
     }
 }
 
+const updateBook = async (bookId, body) => {
+    try {
+        const book = await bookProvider.updateBook(bookId, body);
+        return book;
+    } catch (err) {
+        console.error("There was an error updating a book:", err);
+        return null;
+    }
+}
+
 const deleteBook = async (bookId) => {
     try {
         const response = await bookProvider.deleteBook(bookId);
@@ -41,4 +51,4 @@ const deleteBook = async (bookId) => {
     }
 }
 
-module.exports = { createBook, getAllBook, getBook, deleteBook };
+module.exports = { createBook, getAllBook, getBook, updateBook, deleteBook };
