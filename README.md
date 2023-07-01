@@ -7,33 +7,33 @@ el servicio. También use SQLlite como motor de base de datos.
 
 ### Library
 
-##### POST /library      Crea una nueva librería.
+##### `POST /library`      Crea una nueva librería.
 
-##### GET /library      Muestra todas las librerías con sus libros.
+##### `GET /library`      Muestra todas las librerías con sus libros.
 
-##### GET /library/{id}      Muestra los datos de una librería por id.
+##### `GET /library/{id}`      Muestra los datos de una librería por id.
 
-##### PUT /library/{id}      Actualiza los datos de una librería.
+##### `PUT /library/{id}`      Actualiza los datos de una librería.
 
-##### DELETE library/{id}      Elimina una librería de manera lógica.
+##### `DELETE library/{id}`      Elimina una librería de manera lógica.
 
 ### Book
 
-##### POST /book      Añade un nuevo libro.
+##### `POST /book`      Añade un nuevo libro.
 
-##### GET /book      Muestra todos los libros.
+##### `GET /book`      Muestra todos los libros.
 
-##### GET /book/{id}      Muestra los datos de una libro por id.
+##### `GET /book/{id}`      Muestra los datos de una libro por id.
 
-##### PUT /book/{id}      Actualiza los datos de un libro.
+##### `PUT /book/{id}`      Actualiza los datos de un libro.
 
-##### DELETE /book/{id}      Elimina un libro de manera lógica.
+##### `DELETE /book/{id}`      Elimina un libro de manera lógica.
 
 ### User
 
-##### POST /user      Añade un nuevo usuario.
+##### `POST /user`      Añade un nuevo usuario.
 
-##### GET /user/{id}      Muestra los datos de una usuario por id.
+##### `GET /user/{id}`      Muestra los datos de una usuario por id.
 
 ## Modelos:
 
